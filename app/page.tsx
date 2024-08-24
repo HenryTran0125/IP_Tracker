@@ -6,9 +6,14 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.container}>
         <div className={styles.inputContainer}>
-          <h2>IP Address Tracker</h2>
+          <h2 className={styles.h2}>IP Address Tracker</h2>
 
-          <input placeholder="Search for any IP address or domain" />
+          <div className={styles.inputOutside}>
+            <input
+              className={styles.input}
+              placeholder="Search for any IP address or domain"
+            />
+          </div>
         </div>
 
         <div className={styles.mapContainer}></div>
