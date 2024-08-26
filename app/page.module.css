@@ -1,25 +1,25 @@
 @media (max-width: 1440px) {
   .main {
     height: 100vh;
+    width: 100%;
+    overflow: hidden;
   }
 
   .container {
-    display: flex;
-    flex-direction: column;
     height: 100%;
+    width: 100%;
   }
 
   .inputContainer {
-    flex: 2;
     display: flex;
     flex-direction: column;
     background-image: url(../public/assets/images/pattern-bg-desktop.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100% 40rem;
+    background-position: top;
     justify-content: center;
     align-items: center;
-    position: relative;
-    bottom: 5%;
+    height: 28rem;
   }
 
   .h2 {
@@ -29,45 +29,166 @@
   }
 
   .inputOutside {
+    display: flex;
   }
 
   .input {
-    line-height: 3rem;
+    line-height: 6rem;
     width: 50rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(147, 147, 147, 1);
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border: none;
+    padding: 0 2rem;
+    outline: none;
+  }
+
+  .button {
+    height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding: 2rem;
   }
 
   .mapContainer {
-    flex: 1;
+    /* overflow: hidden; */
+    height: 80rem;
+    width: 100%;
   }
 }
 
+/*-----------------------------------------------------------------------*/
 @media (min-width: 1441px) and (max-width: 1920px) {
   .main {
     height: 100vh;
+    width: 100%;
+    overflow: hidden;
   }
 
   .container {
-    display: flex;
-    flex-direction: column;
     height: 100%;
+    width: 100%;
   }
 
   .inputContainer {
-    flex: 1.5;
     display: flex;
     flex-direction: column;
     background-image: url(../public/assets/images/pattern-bg-desktop.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 40rem;
+    background-position: top;
     justify-content: center;
     align-items: center;
+    height: 28rem;
   }
 
   .h2 {
     color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2.8rem;
+  }
+
+  .inputOutside {
+    display: flex;
+  }
+
+  .input {
+    line-height: 6rem;
+    width: 50rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(147, 147, 147, 1);
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border: none;
+    padding: 0 2rem;
+    outline: none;
+  }
+
+  .button {
+    height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding: 2rem;
   }
 
   .mapContainer {
-    flex: 3;
+    /* overflow: hidden; */
+    height: 80rem;
+    width: 100%;
+  }
+}
+
+/*-----------------------------------------------------------------------*/
+
+@media (min-width: 1921px) {
+  .main {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .container {
+    height: 100%;
+    width: 100%;
+  }
+
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    background-image: url(../public/assets/images/pattern-bg-desktop.png);
+    background-repeat: no-repeat;
+    background-size: 100% 40rem;
+    background-position: top;
+    justify-content: center;
+    align-items: center;
+    height: 28rem;
+  }
+
+  .h2 {
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2.8rem;
+  }
+
+  .inputOutside {
+    display: flex;
+  }
+
+  .input {
+    line-height: 6rem;
+    width: 50rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(147, 147, 147, 1);
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border: none;
+    padding: 0 2rem;
+    outline: none;
+  }
+
+  .button {
+    height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding: 2rem;
+  }
+
+  .mapContainer {
+    /* overflow: hidden; */
+    height: 80rem;
+    width: 100%;
   }
 }
