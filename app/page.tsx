@@ -5,6 +5,9 @@ import arrowButton from "../public/assets/images/chevron-forward-outline.svg";
 import MapComponent from "./components/Map";
 import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
+import { testAPI } from "./components/geolocation";
+import { useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 
 const LazyMap = dynamic(() => import("./components/Map"), {
   ssr: false,
@@ -24,6 +27,25 @@ const LazyMap = dynamic(() => import("./components/Map"), {
 });
 
 export default function Home() {
+  const [input, setInput] = useState<any | null>(" ");
+  const [lat, setLat] = useState<number>(32.69922);
+  const [lng, setLng] = useState<number>(-117.11281);
+
+  async function fetchingMap(input: any) {
+    const data = await testAPI(input);
+    setLat(data.location.lat);
+    setLng(data.location.lng);
+
+    console.log(data);
+    console.log(data.location.lat, data.location.lng);
+  }
+
+  const handleChange = (value: any) => {
+    setInput(value);
+  };
+
+  const debounced = useDebouncedCallback(() => fetchingMap(input), 800);
+  debounced();
   return (
     <main className={styles.main}>
       <div className={styles.container}>
@@ -34,6 +56,8 @@ export default function Home() {
             <input
               className={styles.input}
               placeholder="Search for any IP address or domain"
+              value={input}
+              onChange={(e) => handleChange(e.target.value)}
             />
 
             <div className={styles.button}>
@@ -43,7 +67,7 @@ export default function Home() {
         </div>
 
         <div className={styles.mapContainer}>
-          <LazyMap />
+          <LazyMap lat={lat} lng={lng} />
         </div>
       </div>
     </main>

@@ -133,12 +133,14 @@
   .main {
     height: 100vh;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .container {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .inputContainer {
@@ -187,8 +189,6 @@
   }
 
   .mapContainer {
-    /* overflow: hidden; */
-    height: 80rem;
-    width: 100%;
+    flex: 1;
   }
 }

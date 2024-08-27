@@ -7,8 +7,13 @@ import "leaflet-defaulticon-compatibility";
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
-export default function Map() {
-  const position = [10.762622, 106.660172];
+interface Props {
+  lat: number;
+  lng: number;
+}
+
+export default function Map({ lat = 32.69922, lng = -117.11281 }: Props) {
+  const position = [lat, lng];
   const id = self.crypto.randomUUID();
 
   return (
