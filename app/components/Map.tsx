@@ -12,14 +12,14 @@ interface Props {
   lng: number;
 }
 
-export default function Map({ lat = 32.69922, lng = -117.11281 }: Props) {
+export default function Map({ lat = 21.01997, lng = 105.80955 }: Props) {
   const position = [lat, lng];
   const id = self.crypto.randomUUID();
 
   return (
     <MapContainer
       center={position}
-      zoom={11}
+      zoom={20}
       scrollWheelZoom={true}
       /* IMPORTANT: the map container needs a defined size, otherwise nothing will be visible */
       style={{

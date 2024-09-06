@@ -1,26 +1,23 @@
 const apiKey = "at_GfcP6MKgLdcsPP8FDiaim5Li20OvZ";
+const apiBigData = "bdc_06dded7af18448d0a739dbd84b03160e";
 
-function success(position: any) {
+function getPosition(position: any) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
   console.log(latitude, longitude);
 }
 
-function error(err: any) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
+function getErrorPosition(error: any) {
+  console.error("Error Position: ", error);
 }
 
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0,
-};
+export function getUserPosition() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(getPosition, getErrorPosition);
+  }
+}
 
-export const currPosition = navigator.geolocation.getCurrentPosition(
-  success,
-  error,
-  options
-);
+getUserPosition();
 
 export async function testAPI(domain?: string) {
   try {
@@ -38,5 +35,19 @@ export async function testAPI(domain?: string) {
   } catch (error) {
     console.error("Error fetching data: ", error);
     return null;
+  }
+}
+
+export async function reverseGeocoding(lat: number, lng: number) {
+  try {
+    const response = await fetch(
+      `https://api-bdc.net/data/reverse-geocode?latitude=${lat}&longitude=${lng}&localityLanguage=en&key=${apiBigData}`
+    );
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching data: ", error);
   }
 }

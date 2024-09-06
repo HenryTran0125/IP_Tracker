@@ -5,7 +5,11 @@ import arrowButton from "../public/assets/images/chevron-forward-outline.svg";
 import MapComponent from "./components/Map";
 import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
-import { testAPI } from "./components/geolocation";
+import {
+  getUserPosition,
+  reverseGeocoding,
+  testAPI,
+} from "./components/geolocation";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -28,16 +32,22 @@ const LazyMap = dynamic(() => import("./components/Map"), {
 
 export default function Home() {
   const [input, setInput] = useState<any | null>(" ");
-  const [lat, setLat] = useState<number>(32.69922);
-  const [lng, setLng] = useState<number>(-117.11281);
+  const [lat, setLat] = useState<number>(10.7736054);
+  const [lng, setLng] = useState<number>(106.6315477);
 
   async function fetchingMap(input: any) {
     const data = await testAPI(input);
     setLat(data.location.lat);
     setLng(data.location.lng);
 
+    // console.log(data);
+    // console.log(data.location.lat, data.location.lng);
+  }
+
+  async function reverseGeo() {
+    const data = await reverseGeocoding(lat, lng);
+
     console.log(data);
-    console.log(data.location.lat, data.location.lng);
   }
 
   const handleChange = (value: any) => {
@@ -46,6 +56,7 @@ export default function Home() {
 
   const debounced = useDebouncedCallback(() => fetchingMap(input), 800);
   debounced();
+  reverseGeo();
   return (
     <main className={styles.main}>
       <div className={styles.container}>
@@ -64,6 +75,7 @@ export default function Home() {
               <Image alt="button" src={arrowButton} height={28} width={28} />
             </div>
           </div>
+          {/* <button onClick={() => getUserPosition()}>Get position</button> */}
         </div>
 
         <div className={styles.mapContainer}>
